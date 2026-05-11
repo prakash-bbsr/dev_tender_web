@@ -4,9 +4,12 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Body from './Body'
-import Login from './login'
-import Profile from './profile'
+import Body from './components/Body'
+import Login from './components/login'
+import Profile from './components/Profile'
+import { Provider } from "react-redux";
+import appStore from './utils/appStore';
+import Feed from './components/Feed'
 
 
 function App() {
@@ -14,14 +17,18 @@ function App() {
 
   return (
     <>
-    <BrowserRouter basename="/">
-    <Routes>
-      <Route path="/" element={<Body />}>
-        <Route path="login" element={<Login />} />
-        <Route path="profile" element={<Profile />} />
-      </Route>
-    </Routes>
-  </BrowserRouter>
+    <Provider store={appStore}>
+        <BrowserRouter basename="/">
+        <Routes>
+          <Route path="/" element={<Body />}>
+            <Route path="/" element={<Feed />} />
+            <Route path="login" element={<Login />} />
+            <Route path="profile" element={<Profile />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
+    
     {/*<Navbar/>
      <h1 className='text-3xl font-bold underline'>Welcome to Hello world </h1>*/}
     </>

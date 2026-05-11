@@ -1,16 +1,25 @@
 import { useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [emailId,setEmailId] = useState("");
   const [password,setPassword] = useState("");
+  const navigate = useNavigate();
+  //useDispatch() hook is used to store data to redux
+  const dispatch = useDispatch();
   //Api Call using axios package
-  const handelLogin = async()=>{
+  const handelLogin = async()=>{      
       try {
-        const res = await axios.post("http://localhost:3000/login", {
+        const res = await axios.post(BASE_URL+"/login", {
           emailId: emailId,
           password: password,
         },{ withCredentials:true });
         console.log(res.data);
+        dispatch(addUser(res.data.data));
+        return navigate("/");
       } catch (err) {
         console.error(err);
       }

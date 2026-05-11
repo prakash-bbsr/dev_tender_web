@@ -15,7 +15,7 @@
 - Create a login page
 - install axios
 
--Ors-install cors in backend => add middleware with configuration: origin,credentials:true
+- Ors-install cors in backend => add middleware with configuration: origin,credentials:true
 - Whenever making API call so pass axios =>{with credentials true} 
 - install Redux Toolkit - https://redux-toolkit.js.org/tutorials/quick-start
 - install react-redux +@reduxjs/toolkit => configureStore => Provider => createSlice => add reducer to store
@@ -23,6 +23,11 @@
 - Login and see if your data is coming properly in the store
 - Navbar should update as soon as logs in
 - Refactore our code to add constants file + create a components folder
+
+- you should not be access other route without login
+- if token is not present, redirect user to login page
+- Logout
+- Profile
 Body
     NavBar
     Route=/ => feed

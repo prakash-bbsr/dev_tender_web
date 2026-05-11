@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [emailId,setEmailId] = useState("");
   const [password,setPassword] = useState("");
+  //Error handler
+  const [error,setError] = useState("");
   const navigate = useNavigate();
   //useDispatch() hook is used to store data to redux
   const dispatch = useDispatch();
@@ -20,8 +22,8 @@ const Login = () => {
         console.log(res.data);
         dispatch(addUser(res.data.data));
         return navigate("/");
-      } catch (err) {
-        console.error(err);
+      } catch (err) {               
+        setError(err?.response?.data?.message || "Invalid credentials");        
       }
   }
   return <div className="min-h-screen flex items-center justify-center -mt-20">
@@ -53,7 +55,12 @@ const Login = () => {
             clipRule="evenodd" />
         </svg>
         <input type="password" value={password} className="grow"  placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-      </label>
+      </label>        
+        {error && (
+          <p className="text-red-500 text-center mt-2">
+            {error}
+          </p>
+        )}
         <div className="card-actions justify-center pt-5">
           <button className="btn justify-center" onClick={handelLogin}>Login</button>
         </div>

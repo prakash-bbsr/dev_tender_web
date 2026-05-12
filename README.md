@@ -27,7 +27,12 @@
 - you should not be access other route without login
 - if token is not present, redirect user to login page
 - Logout
+- Get the feed and add the feed in the store
+- Build the user card feed
 - Profile
+- Make Gender Dropdown
+- Use toast Message
+- Make Text to textarea
 Body
     NavBar
     Route=/ => feed

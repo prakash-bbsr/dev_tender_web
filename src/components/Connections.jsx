@@ -21,13 +21,6 @@ const Connections = () => {
     fetchConnection()
   },[]);
 
-  const handleAccept = (id) => {
-    alert("Accepted user " + id);
-  };
-
-  const handleReject = (id) => {
-    //setUsers(users.filter((u) => u.id !== id));
-  };
 
   const handleMessage = (id) => {
     alert("Open chat with user " + id);
@@ -62,21 +55,7 @@ const Connections = () => {
             </p>
 
             {/* Buttons */}
-            <div className="mt-2 flex gap-2">
-              <button
-                onClick={() => handleAccept(connection._id)}
-                className="bg-green-500 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-600"
-              >
-                Accept
-              </button>
-
-              <button
-                onClick={() => handleReject(connection._id)}
-                className="bg-red-500 text-white px-3 py-1 rounded-lg text-sm hover:bg-red-600"
-              >
-                Reject
-              </button>
-
+            <div className="mt-2 flex gap-2">              
               <button
                 onClick={() => handleMessage(connection._id)}
                 className="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-600"

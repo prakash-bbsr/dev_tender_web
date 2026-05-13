@@ -33,6 +33,8 @@
 - Make Gender Dropdown
 - Use toast Message
 - Make Text to textarea
+
+- See all my connection
 Body
     NavBar
     Route=/ => feed

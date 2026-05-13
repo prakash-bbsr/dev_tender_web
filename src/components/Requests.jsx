@@ -22,15 +22,21 @@ const Requests = () => {
     useEffect(()=>{
         fetchRequest()
     },[]);
+    if(!requests) return;
+    if(requests.length === 0){
+        return <h1 className="flex justify-center my-10"> No Connection found</h1>
+    }
 
-    const handleAccept = (id) => {
-        alert("Accepted user " + id);
+    const handleReviewRequest = async (status,_id) => {
+        try{
+            const res = await axios.post(BASE_URL+"/request/review/"+status+"/"+_id,{},{withCredentials:true});
+            //Remove from the redux store
+            dispatch(removeRequest(_id));
+        }catch(err){
+            console.log(err);
+        }
     };
-
-    const handleReject = (id) => {
-        //setUsers(users.filter((u) => u.id !== id));
-    };
-
+    
     const handleMessage = (id) => {
         alert("Open chat with user " + id);
     };
@@ -61,21 +67,21 @@ const Requests = () => {
             {/* Buttons */}
             <div className="mt-2 flex gap-2">
               <button
-                onClick={() => handleAccept(request?.fromUserId?._id)}
+                onClick={() => handleReviewRequest('accepted',request?._id)}
                 className="bg-green-500 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-600"
               >
                 Accept
               </button>
 
               <button
-                onClick={() => handleReject(request?.fromUserId?._id)}
+                onClick={() => handleReviewRequest('rejected',request?._id)}
                 className="bg-red-500 text-white px-3 py-1 rounded-lg text-sm hover:bg-red-600"
               >
                 Reject
               </button>
 
               <button
-                onClick={() => handleMessage(request?.fromUserId?._id)}
+                onClick={() => handleMessage(request?._id)}
                 className="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-600"
               >
                 Message

@@ -35,6 +35,13 @@
 - Make Text to textarea
 
 - See all my connection
+- Showing Reived connection requests
+- Accept or reject the connection requests
+
+Remaining:-
+- Send/Ignore the user card from feed
+- Signup New User
+- Entire testing
 Body
     NavBar
     Route=/ => feed

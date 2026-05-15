@@ -37,9 +37,8 @@
 - See all my connection
 - Showing Reived connection requests
 - Accept or reject the connection requests
-
-Remaining:-
 - Send/Ignore the user card from feed
+Remaining:-
 - Signup New User
 - Entire testing
 Body
